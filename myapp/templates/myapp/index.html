@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+{% load static %} <!--  load images -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieMax</title> <!--  website title -->
+    <link rel="icon" href="{% static 'images/movielogo.png' %}"> <!--  website logo -->
+<!--  CSS styles and fonts -->
+    <style>
+        {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.full-page
+{
+    height: 100%;
+    width: 100%;
+    background-image: url('data:image/jpeg;base64,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');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+.navbar
+{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 30px;
+    padding-top: 50px;
+}
+nav
+{
+    flex: 1;
+    text-align: right;
+}
+nav ul
+{
+    display: inline-block;
+    list-style: none;
+}
+nav ul li
+{
+    display: inline-block;
+    margin-right: 70px;
+}
+nav ul li a
+{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-family: sans-serif;
+}
+nav ul a
+{
+    position-center;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    font-family: sans-serif;
+nav ul li button
+{
+    font-size: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+nav ul li button:hover
+{
+    color: black;
+}
+nav ul li a:hover
+{
+    color: black;
+}
+a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+}
+
+#login-form
+{
+    display: none;
+}
+.form-box
+{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 2% auto;
+    background: rgba(0,0,0,0,3);
+    padding: 10px;
+    overflow: hidden;
+}
+.button-box
+{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+.toggle-btn
+{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#btn
+{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #F3C693;
+    border-radius: 30px;
+    transition: .5s;
+}
+.input-group-login
+{
+    top: 120px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-group-register
+{
+    top: 120px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field
+{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.submit-btn
+{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #F3C693;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+.check-box
+{
+    margin: 30px 10px 34px 0;
+}
+span
+{
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+h2
+{
+    color: #777;
+    font-size: 12px;
+    bottom: 0px;
+    position: absolute;
+ img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+#login
+{
+    left: 50px;
+}
+#login input
+{
+    color: white;
+    font-size: 15;
+}
+#register
+{
+    left: 450px;
+}
+#register input
+{
+    color: white;
+    font-size: 15;
+}
+    </style>
+</head>
+<body>
+     <div class="full-page">
+         <div class="navbar">
+             <div>
+
+             </div>
+             <nav>
+                 <!--  Display selection menu -->
+                 <ul id='MenuItems'>
+                     <h1 align="left">
+                         <font ="Lato" color="17202A" size="5">
+                         Movie Max
+                     </h1>
+                     <!--  Menus -->
+                     <li><a href='home'>Home</a></li>
+                     <li><a href='aboutus'>About Us</a></li>
+                     <li><a href='contact'>Contact</a></li>
+                     <li><a href='register'>Register</a></li>
+                     <li><a href='login'>Log-in</a></li>
+                     <br /><br />
+                     <!--  Cover image -->
+                     <img src="{% static 'images/3.jpg' %}" alt="home"
+                     width="1350px"
+                          height="300px"
+                     />
+                     <!--  Website Motto -->
+                     <span align="center">
+                         <font ="Lato" color="172021" size="7">
+                         Your Convenience is our priority.
+                              Online will make your life easy!
+                     </span>
+                      <h2   align="center">
+                         <font ="Lato" color="17202A" size="4">
+                         What are you waiting for?
+                              Reserve yours now!
+
+                      </h2>
+                     <!--  allows users to select options -->
+                     <a href="register"><p style="text-align:center">Create account.</a>
+                     <a href="login"><p style="text-align:center">:Already have an account.</a>
+</>
+                 </ul>
+             </nav>
+         </div>
+     </div>
+</body>
+</html>
